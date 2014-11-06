@@ -7,7 +7,7 @@
 </ul>
 
 <div class="row">
-     <div class="col-md-3">
+     <div class="col-md-4">
       <p class="lead"><%= link_to(@book.title, @book) %></p>
       <p class="text-info"><%= @book.cuisine %></p>
       <p class="text-info"><%= @book.chef %></p>
@@ -23,7 +23,7 @@
   <p>&nbsp;</p>
   <div class="row">
     <div class="col-md-4 col-sm-4">
-      <p class="lead"><%= recipe.name %></p>
+      <p class="lead"><%= link_to(recipe.name, recipe) %></p>
       <%= image_tag(recipe.image) %>
     </div>
   
@@ -31,11 +31,13 @@
     <% recipe.ingredients.each do |food| %>
       <!-- Ingridients go here -->
       <div class="col-md-4" style="margin-top: 30px">
-      <%= food.name %>
-      <%= food.cost %>
-      <%= food.measurement %>
+      <%= link_to(food.name, food) %>
       <br>
-      <%= image_tag(food.image, width: '65%', height: '150') %>
+      Cost: <%= food.cost %> dollars.
+      <br>
+      Measurements: <%= food.measurement %>
+      <br>
+      <%= image_tag(food.image, width: '150', height: '150') %>
       </div>
     <% end %>
     </div>

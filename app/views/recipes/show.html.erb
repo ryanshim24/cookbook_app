@@ -2,16 +2,26 @@
   <li><%= link_to('New Recipe', new_recipe_path) %></li>
   <li><%= link_to('Edit Recipe', edit_recipe_path(@recipe)) %></li>
   <li><%= link_to('Delete Recipe', @recipe, :method => :delete, :confirm => 'Are you sure?') %></li>
-  <div class='spacer'></div>
 </ul>
 
 <div class="row">
-  <div class="col-md-5 col-sm-5">
+  <div class="col-md-4 col-sm-4">
     <p class="lead"><%= @recipe.name %></p>
     <%= image_tag(@recipe.image) %>
   </div>
 
-  <div class="col-md-7 col-sm-7">
-   <!-- Ingredients go here -->
+  <div class="col-md-8 col-sm-8">
+   <% @recipe.ingredients.each do |food| %>
+      <!-- Ingridients go here -->
+      <div class="col-md-4" style="margin-top: 30px">
+      <%= link_to(food.name, food) %>
+      <br>
+      Cost: <%= food.cost %> dollars.
+      <br>
+      Measurements: <%= food.measurement %>
+      <br>
+      <%= image_tag(food.image, width: '150', height: '150') %>
+      </div>
+    <% end %>
   </div>
  </div>

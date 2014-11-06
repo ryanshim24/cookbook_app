@@ -11,24 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
+   <br>
     <%= f.label :measurement %><br>
     <%= f.text_field :measurement %>
-  </div>
-  <div class="field">
+   <br>
     <%= f.label :cost %><br>
     <%= f.number_field :cost %>
-  </div>
-  <div class="field">
+   <br>
     <%= f.label :image %><br>
     <%= f.text_area :image %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    
+ <p>
+    <%= f.submit class: "btn- btn-primary" %>
+  <% end %>

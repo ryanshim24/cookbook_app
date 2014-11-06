@@ -1,31 +1,23 @@
-<h1>Listing ingredients</h1>
+<ul class="nav nav-pills">
+  <li>
+    <%= link_to('New Ingredients', new_ingredient_path) %>
+  </li>
+</ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Measurement</th>
-      <th>Cost</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @ingredients.each do |ingredient| %>
-      <tr>
-        <td><%= ingredient.name %></td>
-        <td><%= ingredient.measurement %></td>
-        <td><%= ingredient.cost %></td>
-        <td><%= ingredient.image %></td>
-        <td><%= link_to 'Show', ingredient %></td>
-        <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-        <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @ingredients.each do |ingredient| %>
+  <div class="row">
+    <div class="col-md-4 col-sm-4">
+      <p class="lead"><%= link_to(ingredient.name, ingredient) %>
+      <p>Measurements: <%= ingredient.measurement %>
+      <p>Cost: <%= ingredient.cost %> dollars.
+    </div>
 
-<br>
+    <div class="col-md-8 col-sm-8">
+      <p><%= image_tag(ingredient.image, width: '300', height: '300') %>
+    </div>
+  </div>
+<% end %>
 
-<%= link_to 'New Ingredient', new_ingredient_path %>
+
+
