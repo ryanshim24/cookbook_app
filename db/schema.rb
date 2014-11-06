@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141106002641) do
     t.string   "measurement"
     t.integer  "cost"
     t.text     "image"
+    t.text     "ingredient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

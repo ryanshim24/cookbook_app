@@ -5,6 +5,7 @@ class CreateIngredients < ActiveRecord::Migration
       t.string :measurement
       t.integer :cost
       t.text :image
+      t.text :ingredient_id
 
       t.timestamps
     end
