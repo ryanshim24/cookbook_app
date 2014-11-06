@@ -5,5 +5,5 @@ class Book < ActiveRecord::Base
     maximum: 100,
     too_short: "must have least %{count} letters, dude",
     too_long: "is way too long"
-}
+  }
 end
