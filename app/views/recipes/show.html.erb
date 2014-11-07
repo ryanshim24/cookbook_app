@@ -1,14 +1,14 @@
 <%= render "nav" %>
 <%= render "header" %>
 
-<div class="row">
+<div class="row-center">
   <div class="col-xs-12 newBook">
     <p>Something wrong?? | <%= link_to('Edit Recipe!', edit_recipe_path) %> | <%= link_to('Delete Book', @recipe, :method => :delete, :confirm => 'Are you sure?') %> </p>
   </div>
 </div>
 
-<div class="panel-body">
-  <div class="row">
+<div class="panel-body" style="margin-top: 30px">
+  <div class="row-center">
     <!-- previous button -->
     <% if @recipe.id != 1 %>
       <a href="/recipes/<%= @recipe.id - 1%>" class="prev">Previous</a>
@@ -45,10 +45,10 @@
     <% @recipe.ingredients.each_with_index do |food, index| %>
           <% if(index % 4 == 0) %>
         </div>
-          <div class="row">
+          <div class="row-center">
 
             <div class="col-xs-3 thumbnail">
-              <%= image_tag(food.image, width: '150', height: '150') %>
+              <%= image_tag(food.image, size: '150x150') %>
               <h3><%= link_to(food.name, food) %></h3>
               <p>Cost: <%= food.cost %></p>
               <p>Measurements: <%= food.measurement %></p>
@@ -56,7 +56,7 @@
 
             <% else %>
               <div class="col-xs-3 thumbnail">
-                <%= image_tag(food.image, width: '150', height: '150') %>
+                <%= image_tag(food.image, size: '150x150') %>
                 <h3><%= link_to(food.name, food) %></h3>
                 <p>Cost: <%= food.cost %></p>
                 <p>Measurements: <%= food.measurement %></p>
