@@ -7,6 +7,9 @@ $(document).ready(function() {
         helpers: {
           title: {
             type: 'inside',
+          },
+          overlay: {
+            locked: false
           }
         },
         beforeLoad: function() {

@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   # GET /recipes/1.json
   def show
+    @recipes = Recipe.count
   end
 
   # GET /recipes/new

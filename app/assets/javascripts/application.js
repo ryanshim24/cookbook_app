@@ -11,9 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.fancybox
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.fancybox
 //= require_tree .
 
 
