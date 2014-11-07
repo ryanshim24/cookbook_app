@@ -46,10 +46,10 @@
   <br>
   
   <div class="input-group">
-    <% Ingredient.order(:name).each do |food| %>
+    <% Ingredient.order(:name).each do |ingredient| %>
       <span class="input-group-addon">
-        <%= food.name %>
-        <%= check_box_tag 'recipe[ingredient_ids][]', food.id, food.in?(@recipe.ingredients), {class: "checkbox inline"} %>
+      <%= ingredient.name %>
+      <%= check_box_tag 'recipe[ingredient_ids][]', ingredient.id, ingredient.in?(@recipe.ingredients.to_a), {class: "checkbox inline"} %>
       </span>
     <% end %>
   </div>
