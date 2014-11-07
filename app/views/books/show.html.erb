@@ -1,45 +1,85 @@
-
-
-<ul class="nav nav-pills">
-  <li><%= link_to('New Book', new_book_path) %></li>
-  <li><%= link_to('Delete Book', @book, :method => :delete, :confirm => 'Are you sure?') %></li>
-  <li><%= link_to('Edit Book', edit_book_path(@book)) %></li>
-</ul>
+<%= render "nav" %>
+<%= render "header" %>
 
 <div class="row">
-     <div class="col-md-4">
-      <p class="lead"><%= link_to(@book.title, @book) %></p>
-      <p class="text-info"><%= @book.cuisine %></p>
-      <p class="text-info"><%= @book.chef %></p>
-    </div>
-    <div class="col-md-8">
-      <p class="text-warning"><%= image_tag(@book.image) %></p>
-    </div>
+  <div class="col-xs-12 newBook">
+    <p>Something wrong?? | <%= link_to('Edit Book!', edit_book_path) %> | <%= link_to('Delete Book', @book, :method => :delete, :confirm => 'Are you sure?') %> </p>
+  </div>
 </div>
 
-<br>
-<!-- SHOW LIST OF RECEPIES HERE -->
-<% @book.recipes.each do |recipe| %>
-  <p>&nbsp;</p>
+<div class="panel-body">
   <div class="row">
-    <div class="col-md-4 col-sm-4">
-      <p class="lead"><%= link_to(recipe.name, recipe) %></p>
-      <%= image_tag(recipe.image) %>
+    <!-- previous button -->
+    <% if @book.id != 1 %>
+      <a href="/books/<%= @book.id - 1%>" class="prev">Previous</a>
+    <% end %>
+    <!-- next button -->
+    <% if @book.id != @books %>
+      <a href="/books/<%= @book.id + 1%>" class="next">Next</a>
+    <% end %>
+  </div>
+
+
+<div class="row">
+  <div class="row-center">
+  <!-- book image -->
+    <div class="col-xs-4 col-xs-offset-1">
+      <%= image_tag(@book.image, width: '300', height: '400') %>
     </div>
   
-    <div class="col-md-8 col-sm-8">
-    <% recipe.ingredients.each do |food| %>
-      <!-- Ingridients go here -->
-      <div class="col-md-4" style="margin-top: 30px">
-      <%= link_to(food.name, food) %>
-      <br>
-      Cost: <%= food.cost %> dollars.
-      <br>
-      Measurements: <%= food.measurement %>
-      <br>
-      <%= image_tag(food.image, width: '150', height: '150') %>
+  <!-- Description -->
+    <div class="col-xs-6">
+      <div class="book-description right-panel">
+        <h3><%= @book.title %></h3>
+        <h4>Written by: <%= @book.chef%></h4>
+        <h4>Cuisine: <%= @book.cuisine %></h4>
       </div>
-    <% end %>
     </div>
   </div>
+</div>
+<br>
+
+<!-- SHOW LIST OF RECEPIES HERE -->
+<% @book.recipes.each do |recipe| %>
+  <div class="row">
+    <div class="row-center">
+      <div class="col-xs-3" style="margin-left: 45px">
+        <h4><%= link_to(recipe.name, recipe) %></h4>
+         <%= image_tag(recipe.image) %>
+      </div>
+
+      <div class="col-xs-8" style="margin-top: 40px; margin-left: 25px">
+        <div class="row">
+          <% recipe.ingredients.each_with_index do |food, index| %>
+          <% if(index % 4 == 0) %>
+        </div>
+          <div class="row">
+
+            <div class="col-xs-3 thumbnail">
+              <%= image_tag(food.image, width: '150', height: '150') %>
+              <h3><%= link_to(food.name, food) %></h3>
+              <p>Cost: <%= food.cost %></p>
+              <p>Measurements: <%= food.measurement %></p>
+            </div>
+
+            <% else %>
+              <div class="col-xs-3 thumbnail">
+                <%= image_tag(food.image, width: '150', height: '150') %>
+                <h3><%= link_to(food.name, food) %></h3>
+                <p>Cost: <%= food.cost %></p>
+                <p>Measurements: <%= food.measurement %></p>
+              </div>
+          <% end %>
+          <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+  <hr>
 <% end %>
+
+
+
+
+
+

@@ -1,4 +1,14 @@
+<%= render "nav" %>
+<%= render "header" %>
+
+<div class="panel-body">
+  <div class="row-center">
+    <div class="col-xs-4 col-xs-offset-1">
+      <h1>THE INGREDIENTS</h1>
+    
+
 <%= form_for(@ingredient) do |f| %>
+
   <% if @ingredient.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
@@ -13,17 +23,25 @@
 
 
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control", :autofocus => true %>
    <br>
     <%= f.label :measurement %><br>
-    <%= f.text_field :measurement %>
+    <%= f.text_field :measurement, class: "form-control", :autofocus => true %>
    <br>
     <%= f.label :cost %><br>
-    <%= f.number_field :cost %>
+    <%= f.number_field :cost, class: "form-control", :autofocus => true %>
    <br>
     <%= f.label :image %><br>
-    <%= f.text_area :image %>
+    <%= f.text_area :image, class: "form-control", :autofocus => true %>
     
- <p>
+  <div class="form-group">
     <%= f.submit class: "btn- btn-primary" %>
+  </div>
+  <br>
+  <%= link_to 'Show', @ingredient %> |
+  <%= link_to 'Back', ingredient_path %>
+  <br>
   <% end %>
+  </div>
+  </div>
+  </div>

@@ -1,4 +1,4 @@
 json.array!(@recipes) do |recipe|
-  json.extract! recipe, :id, :name, :course, :cooktime, :servingsize, :instructions, :image, :book_id
-  json.url recipe_url(recipe, format: :json)
+  json.extract! recipe, :id, :name, :measurement, :cost, :image
+  json.url ingredient_url(recipe, format: :json)
 end

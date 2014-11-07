@@ -1,20 +1,40 @@
-<ul class="nav nav-pills">
-  <li><%= link_to('New Ingredient', new_ingredient_path) %></li>
-  <li><%= link_to('Delete Ingredient', @ingredient, :method => :delete, :confirm => 'Are you sure?') %></li>
-  <li><%= link_to('Edit Ingredient', edit_ingredient_path(@ingredient)) %></li>
-</ul>
-<br>
+<%= render "nav" %>
+<%= render "header" %>
 
 <div class="row">
-	<div class="col-md-4">
-		<p class="lead"><%= @ingredient.name %></p>
-		<p class="text-info">Measurements: <%= @ingredient.measurement %></p>
-		<p class="text-info">Costs: <%= @ingredient.cost %> dollars.</p>
-	</div>
-	<div class="col-md-8">
-		<p class="text-warning"><%= image_tag(@ingredient.image, width: '300', height: '300') %></p>
-	</div>
+  <div class="col-xs-12 newBook">
+    <p>Something wrong?? | <%= link_to('Edit Ingredeint!', edit_ingredient_path) %> | <%= link_to('Delete Book', @ingredient, :method => :delete, :confirm => 'Are you sure?') %> </p>
+  </div>
 </div>
+<br>
 
+<div class="panel-body">
+  <div class="row">
+    <!-- previous button -->
+    <% if @ingredient.id != 1 %>
+      <a href="/ingredients/<%= @ingredient.id - 1%>" class="prev">Previous</a>
+    <% end %>
+    <!-- next button -->
+    <% if @ingredient.id != @ingredient %>
+      <a href="/ingredients/<%= @ingredient.id + 1%>" class="next">Next</a>
+    <% end %>
+  </div>
 
+ <div class="row">
+  <div class="row-center">
+
+    <div class="col-xs-4 col-xs-offset-1">
+      <%= image_tag(@ingredient.image, width: '300', height: '300') %>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="ingredient-description right-panel">
+        <h3><%= @ingredient.name %></h3>
+        <h4>Measurements: <%= @ingredient.measurement %></h4>
+        <h4>Cost: <%= @ingredient.cost %> dollars.</h4>       
+      </div>
+    </div>
+  </div>
+</div>
+<br>
 

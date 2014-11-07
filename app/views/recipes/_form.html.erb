@@ -1,4 +1,15 @@
+<%= render "nav" %>
+<%= render "header" %>
+
+<div class="panel-body">
+  <div class="row-center">
+    <div class="col-xs-4 col-xs-offset-1">
+      <h1>THE RECIPES</h1>
+
+
 <%= form_for(@recipe) do |f| %>
+
+
   <% if @recipe.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
@@ -13,25 +24,26 @@
 
   
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control", :autofocus => true %>
   <br>
     <%= f.label :course %><br>
-    <%= f.text_field :course %>
+    <%= f.text_field :course, class: "form-control", :autofocus => true %>
   <br>
     <%= f.label :cooktime %><br>
-    <%= f.number_field :cooktime %>
+    <%= f.number_field :cooktime, class: "form-control", :autofocus => true %>
   <br>
     <%= f.label :servingsize %><br>
-    <%= f.number_field :servingsize %>
+    <%= f.number_field :servingsize, class: "form-control", :autofocus => true %>
   <br>
     <%= f.label :instructions %><br>
-    <%= f.text_area :instructions %>
+    <%= f.text_area :instructions, class: "form-control", :autofocus => true %>
   <br>
     <%= f.label :image %><br>
-    <%= f.text_area :image %>
+    <%= f.text_area :image, class: "form-control", :autofocus => true %>
   <br>
     <%= f.label :book_id %><br>
-    <%= f.number_field :book_id %>
+    <%= f.number_field :book_id, class: "form-control", :autofocus => true %>
+  <br>
   
   <div class="input-group">
     <% Ingredient.order(:name).each do |food| %>
@@ -42,6 +54,15 @@
     <% end %>
   </div>
   
-  <p>
+  <div class="form-group">
     <%= f.submit class: "btn- btn-primary" %>
-    <% end %>
+  </div>
+  <br>
+  <%= link_to 'Show', @recipe %> |
+  <%= link_to 'Back', recipes_path %>
+  <br>
+<% end %>
+
+</div>
+</div>
+</div>

@@ -1,23 +1,47 @@
-<ul class="nav nav-pills">
-  <li>
-    <%= link_to('New Ingredients', new_ingredient_path) %>
-  </li>
-</ul>
+<%= render "nav" %>
+<%= render "header" %>
 
 
-<% @ingredients.each do |ingredient| %>
-  <div class="row">
-    <div class="col-md-4 col-sm-4">
-      <p class="lead"><%= link_to(ingredient.name, ingredient) %>
-      <p>Measurements: <%= ingredient.measurement %>
-      <p>Cost: <%= ingredient.cost %> dollars.
-    </div>
 
-    <div class="col-md-8 col-sm-8">
-      <p><%= image_tag(ingredient.image, width: '300', height: '300') %>
-    </div>
+<div class="row">
+  <div class="col-xs-12 newBook">
+    <p>Want to add a new Ingredient? <%= link_to('New Ingredeint', new_ingredient_path) %> </p>
   </div>
-<% end %>
+</div>
+
+<div class="row-center">
+  <div class="col-xs-12">
+    <h1>The Ingredients</h1>
+  </div>
+</div>
+
+<div class="row-center" style="margin-left: 30px;">
+  <div class="col-md-12 col-md-offset-1">
+    <% @ingredients.each_with_index do |food, index| %>
+          <% if(index % 4 == 0) %>
+        </div>
+          <div class="row">
+
+            <div class="col-md-3 thumbnail">
+              <%= image_tag(food.image, width: '150', height: '150') %>
+              <h3><%= link_to(food.name, food) %></h3>
+              <p>Cost: <%= food.cost %></p>
+              <p>Measurements: <%= food.measurement %></p>
+            </div>
+
+            <% else %>
+              <div class="col-md-3 thumbnail">
+                <%= image_tag(food.image, width: '150', height: '150') %>
+                <h3><%= link_to(food.name, food) %></h3>
+                <p>Cost: <%= food.cost %></p>
+                <p>Measurements: <%= food.measurement %></p>
+              </div>
+          <% end %>
+    <% end %>
+  </div>  
+</div>
+
+
 
 
 

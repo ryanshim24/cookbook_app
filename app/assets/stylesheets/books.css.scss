@@ -1,3 +1,78 @@
 // Place all the styles related to the Books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.panel-body {
+  color: #373740;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* HEADER */
+.header {
+  width: 100%;
+  height: 300px;
+  background-color: #B4DCFF;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+}
+
+.header h1 {
+  font-size: 65px;
+  padding-top: 20px;
+}
+
+
+
+
+
+/* INDEX PAGE (BOOK) */
+
+.newBook {
+  height: 35px;
+  background-color: #84C4FE;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.newBook p {
+  padding-top: 7px;
+  margin-right: 50px;
+  float: right;
+}
+
+.newBook a {
+  color: black;
+  font-style: italic
+}
+
+.book {
+  height: 265px;
+  width: 175px;
+  margin: 10px;
+}
+
+
+
+
+
+/* SHOW PAGE (BOOK) */
+
+.next {
+  font-family: 'Quicksand', sans-serif;
+  position: absolute;
+  right: 20px;
+}
+
+.prev {
+  font-family: 'Quicksand', sans-serif;
+  position: absolute;
+  left: 20px;
+}
+
+
+
+.form-group {
+  font-family: 'Quicksand', sans-serif;
+  color: #373740;
+  margin-top: 30px;
+}

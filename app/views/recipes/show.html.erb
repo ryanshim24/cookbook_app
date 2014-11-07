@@ -1,27 +1,71 @@
-<ul class="nav nav-pills">
-  <li><%= link_to('New Recipe', new_recipe_path) %></li>
-  <li><%= link_to('Edit Recipe', edit_recipe_path(@recipe)) %></li>
-  <li><%= link_to('Delete Recipe', @recipe, :method => :delete, :confirm => 'Are you sure?') %></li>
-</ul>
+<%= render "nav" %>
+<%= render "header" %>
 
 <div class="row">
-  <div class="col-md-4 col-sm-4">
-    <p class="lead"><%= @recipe.name %></p>
-    <%= image_tag(@recipe.image) %>
+  <div class="col-xs-12 newBook">
+    <p>Something wrong?? | <%= link_to('Edit Recipe!', edit_recipe_path) %> | <%= link_to('Delete Book', @recipe, :method => :delete, :confirm => 'Are you sure?') %> </p>
   </div>
+</div>
 
-  <div class="col-md-8 col-sm-8">
-   <% @recipe.ingredients.each do |food| %>
-      <!-- Ingridients go here -->
-      <div class="col-md-4" style="margin-top: 30px">
-      <%= link_to(food.name, food) %>
-      <br>
-      Cost: <%= food.cost %> dollars.
-      <br>
-      Measurements: <%= food.measurement %>
-      <br>
-      <%= image_tag(food.image, width: '150', height: '150') %>
-      </div>
+<div class="panel-body">
+  <div class="row">
+    <!-- previous button -->
+    <% if @recipe.id != 1 %>
+      <a href="/recipes/<%= @recipe.id - 1%>" class="prev">Previous</a>
+    <% end %>
+    <!-- next button -->
+    <% if @recipe.id != @recipe %>
+      <a href="/recipes/<%= @recipe.id + 1%>" class="next">Next</a>
     <% end %>
   </div>
- </div>
+
+<div class="row">
+  <div class="row-center">
+
+    <div class="col-xs-4 col-xs-offset-1">
+      <img src="<%= @recipe.image %>">
+    </div>
+
+    <div class="col-xs-6">
+      <div class="recipe-description right-panel">
+        <h3><%= @recipe.name %></h3>
+        <h4>Course: <%= @recipe.course %></h4>
+        <h4>Cooktime: <%= @recipe.cooktime %> minutes</h4>
+        <h4>Serving Size: <%= @recipe.servingsize %></h4>
+        <h4>Instructions: <%= @recipe.instructions %></h4>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+<div class="row-center">
+  <div class="col-xs-12">
+    <% @recipe.ingredients.each_with_index do |food, index| %>
+          <% if(index % 4 == 0) %>
+        </div>
+          <div class="row">
+
+            <div class="col-xs-3 thumbnail">
+              <%= image_tag(food.image, width: '150', height: '150') %>
+              <h3><%= link_to(food.name, food) %></h3>
+              <p>Cost: <%= food.cost %></p>
+              <p>Measurements: <%= food.measurement %></p>
+            </div>
+
+            <% else %>
+              <div class="col-xs-3 thumbnail">
+                <%= image_tag(food.image, width: '150', height: '150') %>
+                <h3><%= link_to(food.name, food) %></h3>
+                <p>Cost: <%= food.cost %></p>
+                <p>Measurements: <%= food.measurement %></p>
+              </div>
+          <% end %>
+    <% end %>
+  </div>  
+</div>
+</div>
+
+
+

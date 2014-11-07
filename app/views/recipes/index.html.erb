@@ -1,21 +1,29 @@
-<ul class="nav nav-pills">
-  <li>
-    <%= link_to('New Recipe', new_recipe_path) %>
-  </li>
-</ul>
+<%= render "nav" %>
+<%= render "header" %>
 
 
-<% @recipes.each do |recipe| %>
-  <div class="row">
-     <div class="col-md-4 col-sm-4">
-      <p class="lead"><%= link_to(recipe.name, recipe) %>
-      <p>Course: <%= recipe.course %>
-      <p>Cook time: <%= recipe.cooktime %>
-      <p>Serving size: <%= recipe.servingsize %>
-      <p><strong>Instructions:</strong><br> <%= recipe.instructions %>
-    </div>
-     <div class="col-md-8 col-sm-8">
-      <p><%= image_tag(recipe.image) %>
-    </div>
+
+<div class="row">
+  <div class="col-xs-12 newBook">
+    <p>Want to add a new Recipe? <%= link_to('New Recipe', new_recipe_path) %> </p>
   </div>
-<% end %>
+</div>
+
+<div class="row-center">
+  <div class="col-xs-12">
+    <h1>The Recipes</h1>
+  </div>
+</div>
+
+<div class="row-center">
+  <div class="col-xs-12">
+    <% @recipes.each do |recipe| %>
+      <div class="col-xs-4 thumbnail">
+        <%= image_tag(recipe.image) %>
+        <h2><%= link_to(recipe.name, recipe) %></h2>
+        <h4>Course: <%= recipe.course %></h4>
+        <h4>Cook time: <%= recipe.cooktime %></h4>
+      </div>
+    <% end %>
+  </div>
+</div>
